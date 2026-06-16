@@ -1,0 +1,297 @@
+/* frontend/src/App.css */
+
+body {
+  background-color: #f4f7f6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.App {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+}
+
+h1 {
+  color: #2d3436;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+input {
+  padding: 12px;
+  border: 1px solid #dfe6e9;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #74b9ff;
+}
+
+button {
+  padding: 12px;
+  background-color: #00cec9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #00b894;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 1.5rem 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.expense-item {
+  background: #fdfdfd;
+  padding: 12px;
+  border-bottom: 1px solid #f1f1f1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.expense-item:hover {
+  transform: scale(1.02);
+}
+
+.expense-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.expense-title {
+  font-weight: 600;
+  color: #2d3436;
+}
+
+.expense-date {
+  font-size: 0.75rem;
+  color: #b2bec3;
+}
+
+.expense-amount {
+  font-weight: bold;
+  color: #d63031;
+  /* Xərclər adətən qırmızı olur :) */
+}
+
+.item.income {
+  border-right: 5px solid #2ecc71;
+}
+
+.item.expense {
+  border-right: 5px solid #e74c3c;
+}
+
+.balance-card {
+  text-align: center;
+  background: #2d3436;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* Əlavə və yenilənmiş dizaynlar */
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.list-header h3 {
+  margin: 0;
+  color: #2d3436;
+}
+
+.clear-btn {
+  background-color: #ff7675;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: 0.2s;
+}
+
+.clear-btn:hover {
+  background-color: #d63031;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fdfdfd;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.item.income {
+  border-left: 5px solid #2ecc71;
+}
+
+.item.expense {
+  border-left: 5px solid #e74c3c;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.item-title {
+  font-weight: 600;
+  color: #2d3436;
+}
+
+.item-date {
+  font-size: 0.75rem;
+  color: #b2bec3;
+  margin-top: 4px;
+}
+
+.item-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.item-amount {
+  font-weight: bold;
+}
+
+.item.income .item-amount {
+  color: #2ecc71;
+}
+
+.item.expense .item-amount {
+  color: #e74c3c;
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 5px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.delete-btn:hover {
+  background: #ffeaa7;
+}
+
+/* --- LOGIN & REGISTER STYLES --- */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.auth-card {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 350px;
+  text-align: center;
+}
+
+.auth-card h2 {
+  margin-bottom: 20px;
+  color: #2d3436;
+}
+
+.auth-card input {
+  width: 100%;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+.auth-btn {
+  width: 100%;
+  background: #0984e3;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-btn:hover {
+  background: #74b9ff;
+}
+
+.toggle-text {
+  margin-top: 15px;
+  color: #0984e3;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logout-btn {
+  background: #dfe6e9;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.logout-btn:hover {
+  background: #b2bec3;
+}
