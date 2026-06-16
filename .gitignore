@@ -1,0 +1,11 @@
+# Node modulları (Çox ağır olduğu üçün GitHub-a yüklənməməlidir)
+node_modules/
+
+# Verilənlər bazası və təhlükəsizlik
+*.db
+expenses.db
+.env
+
+# Python və React-in yaratdığı lazımsız keş/build faylları
+__pycache__/
+build/
