@@ -75,4 +75,4 @@ cd ../frontend
 npm install
 npm start                  # App will launch on http://localhost:3000
 🤝 Let's Connect!
-If you'd like to discuss this project or explore professional opportunities, feel free to connect with me on LinkedIn!
+If you'd like to discuss this project or explore professional opportunities, feel free to connect with me on [LinkedIn!]{https://www.linkedin.com/in/huseyn-bayramov-89a661336}
