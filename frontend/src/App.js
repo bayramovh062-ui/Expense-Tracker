@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
 import './App.css';
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
@@ -83,7 +87,8 @@ function App() {
         { title, amount: parseFloat(amount), type },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      setTitle(''); setAmount('');
+      setTitle('');
+      setAmount('');
       fetchExpenses();
       toast.success("Entry added!");
     } catch (error) {
@@ -103,8 +108,47 @@ function App() {
     }
   };
 
+  // ==========================================
+  // HESABLAMALAR VƏ QRAFİK DATASI
+  // ==========================================
+
   const balance = expenses.reduce((acc, curr) =>
-    curr.type.toLowerCase() === 'income' ? acc + curr.amount : acc - curr.amount, 0);
+    curr.type.toLowerCase() === 'income' ? acc + Number(curr.amount) : acc - Number(curr.amount), 0);
+
+  const totalIncome = expenses
+    .filter(item => item.type.toLowerCase() === 'income')
+    .reduce((acc, curr) => acc + Number(curr.amount), 0);
+
+  const totalExpense = expenses
+    .filter(item => item.type.toLowerCase() === 'expense')
+    .reduce((acc, curr) => acc + Number(curr.amount), 0);
+
+  // Chart.js DATASI
+  const chartData = {
+    labels: ['Income', 'Expense'],
+    datasets: [
+      {
+        data: [totalIncome || 0, totalExpense || 0],
+        backgroundColor: ['#28a745', '#dc3545'],
+        borderColor: ['#20c997', '#c82333'],
+        borderWidth: 2,
+      }
+    ]
+  };
+
+  const chartOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'bottom',
+      },
+      tooltip: {
+        callbacks: {
+          label: (context) => `$${context.parsed.toFixed(2)}`
+        }
+      }
+    }
+  };
 
   // ==========================================
   // UI RENDER
@@ -168,11 +212,20 @@ function App() {
           <button onClick={logout} className="logout-btn">Logout 🚪</button>
         </div>
 
+        {/* BALANS */}
         <div className="balance-card">
           <p>Total Balance</p>
           <h2 style={{ color: balance >= 0 ? '#2ecc71' : '#e74c3c' }}>
             ${balance.toFixed(2)}
           </h2>
+
+          <div className="gamification-badge">
+            {balance >= 0 ? (
+              <span className="badge-success">Budget Master 🏆</span>
+            ) : (
+              <span className="badge-danger">Danger! ⚠️</span>
+            )}
+          </div>
         </div>
 
         <form onSubmit={addEntry}>
@@ -184,6 +237,16 @@ function App() {
           </select>
           <button type="submit" className="add-btn">Add</button>
         </form>
+
+        {/* QRAFİK - CHART.JS */}
+        {(totalIncome > 0 || totalExpense > 0) && (
+          <div className="chart-container">
+            <h4>Financial Analysis</h4>
+            <div style={{ width: '100%', maxWidth: '300px', margin: '0 auto' }}>
+              <Pie data={chartData} options={chartOptions} />
+            </div>
+          </div>
+        )}
 
         {expenses.length > 0 && (
           <div className="list-header">
@@ -211,4 +274,5 @@ function App() {
     </>
   );
 }
+
 export default App;
